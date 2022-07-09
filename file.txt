@@ -1,17 +1,19 @@
 docker run -d \
-  --name=jellyfin \
+  --name=radarr \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
-  -p 8096:8096 \
-  -p 8920:8920 `#optional` \
-  -p 7359:7359/udp `#optional` \
-  -p 1900:1900/udp `#optional` \
-  -v /dockdata/jellyfin:/config \
-  -v /data/tvseries:/data/tvshows \
-  -v /data/movies:/data/movies \
+  -p 7878:7878 \
+  -v /dockdata/radarr:/config \
+  -v /data/movies:/movies `#optional` \
+  -v /dockdata/qbittorent/downloads:/downloads `#optional` \
+  --restart unless-stopped \
+  lscr.io/linuxserver/radarr:latest
  
-  jellyfin/jellyfin:latest
+
+
+
+
 
 sudo docker create --name=organizr \
 --name=organizr \
