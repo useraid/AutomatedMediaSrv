@@ -6,12 +6,25 @@ docker run -d \
   -p 7878:7878 \
   -v /dockdata/radarr:/config \
   -v /data/movies:/movies `#optional` \
-  -v /dockdata/qbittorent/downloads:/downloads `#optional` \
+  -v :/downloads `#optional` \
   --restart unless-stopped \
   lscr.io/linuxserver/radarr:latest
  
-
-
+---
+version: "2.1"
+services:
+  organizr:
+    image: linuxserver/organizr
+    container_name: organizr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    volumes:
+      - /dockdata/organizr:/config
+    ports:
+      - 9983:80
+    restart: unless-stopped
 
 
 
