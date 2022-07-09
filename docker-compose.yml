@@ -35,6 +35,20 @@ services:
       - 7359:7359/udp 
       - 1900:1900/udp 
     restart: unless-stopped
+    
+  heimdall:
+    image: linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    volumes:
+      - /dockdata/heimdall:/config
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
 
 
 # Indexers
