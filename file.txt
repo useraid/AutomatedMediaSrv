@@ -1,53 +1,16 @@
-docker run -d \
-  --name=radarr \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=Europe/London \
-  -p 7878:7878 \
-  -v /dockdata/radarr:/config \
-  -v /data/movies:/movies `#optional` \
-  -v :/downloads `#optional` \
-  --restart unless-stopped \
-  lscr.io/linuxserver/radarr:latest
- 
 ---
 version: "2.1"
 services:
-  organizr:
-    image: linuxserver/organizr
-    container_name: organizr
+  heimdall:
+    image: linuxserver/heimdall:latest
+    container_name: heimdall
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - /dockdata/organizr:/config
+      - /dockdata/heimdall:/config
     ports:
-      - 9983:80
+      - 80:80
+      - 443:443
     restart: unless-stopped
-
-
-
-sudo docker create --name=organizr \
---name=organizr \
---restart=always \
--v :/config \
--e PGID=1000 -e PUID=1000 \
--p 8899:80 \
-organizr/organizr
-
-version: "3.6"
-services:
-    organizr:
-        container_name: organizr
-        hostname: organizr
-        image: organizr/organizr:latest
-        restart: unless-stopped
-        ports:
-            - 80:80
-        volumes:
-            - /dockdata/organizr/config:/config
-        environment:
-            - PUID=1000
-            - PGID=1000
-            - TZ=Asia/Kolkata
