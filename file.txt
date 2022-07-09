@@ -16,7 +16,23 @@ docker run -d \
 sudo docker create --name=organizr \
 --name=organizr \
 --restart=always \
--v /dockdata/organizr:/config \
+-v :/config \
 -e PGID=1000 -e PUID=1000 \
 -p 8899:80 \
 organizr/organizr
+
+version: "3.6"
+services:
+    organizr:
+        container_name: organizr
+        hostname: organizr
+        image: organizr/organizr:latest
+        restart: unless-stopped
+        ports:
+            - 80:80
+        volumes:
+            - /dockdata/organizr/config:/config
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Asia/Kolkata
