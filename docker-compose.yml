@@ -18,8 +18,26 @@ services:
       - 6881:6881/udp
     restart: unless-stopped
 
+  jellyfin:
+    image: linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    volumes:
+      - /dockdata/jellyfin:/config
+      - /data/tvseries:/data/tvshows
+      - /data/movies:/data/movies
+    ports:
+      - 8096:8096
+      - 8920:8920 
+      - 7359:7359/udp 
+      - 1900:1900/udp 
+    restart: unless-stopped
 
-#indexers
+
+# Indexers
 
   jackett:
     image: linuxserver/jackett:latest
@@ -28,7 +46,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Kolkata
-      - AUTO_UPDATE=true #optional
+      - AUTO_UPDATE=true 
     volumes:
       - /dockdata/jackett:/config
     ports:
@@ -41,11 +59,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Asia/Kolkata
     volumes:
       - /dockdata/bazarr:/config
-      - /data/movies:/movies #optional
-      - /data/tvseries:/tv #optional
+      - /data/movies:/movies 
+      - /data/tvseries:/tv 
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -59,8 +77,23 @@ services:
       - TZ=Asia/Kolkata
     volumes:
       - /dockdata/sonarr:/config
-      - /data/tvseries:/tv #optional
-      - /dockdata/qbittorent/downloads:/downloads #optional
+      - /data/tvseries:/tv 
+      - /dockdata/qbittorent/downloads:/downloads 
     ports:
       - 8989:8989
+    restart: unless-stopped
+
+  radarr:
+    image: linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    volumes:
+      - /dockdata/radarr/data:/config
+      - /data/movies:/movies 
+      - /dockdata/qbittorent/downloads:/downloads 
+    ports:
+      - 7878:7878
     restart: unless-stopped
