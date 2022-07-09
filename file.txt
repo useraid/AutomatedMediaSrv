@@ -12,3 +12,11 @@ docker run -d \
   -v /data/movies:/data/movies \
   --restart unless-stopped \
   jellyfin/jellyfin:latest
+
+docker run -d \
+  --name=organizr \
+  -v /dockdata/organizr:/config \
+  -e PGID=1000 \
+  -e PUID=1000  \
+  -p 80:80 \
+  organizr/organizr:latest
