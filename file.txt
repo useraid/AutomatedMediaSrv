@@ -11,4 +11,4 @@ docker run -d \
   -v /data/tvseries:/data/tvshows \
   -v /data/movies:/data/movies \
   --restart unless-stopped \
-  lscr.io/linuxserver/jellyfin:latest
+  jellyfin/jellyfin:latest
