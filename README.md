@@ -14,3 +14,4 @@ The currently added containers are
 - Radarr
 - Bazarr
 
+<b>Installation guide can be found in the documentation.<b>
