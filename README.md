@@ -7,6 +7,7 @@ The currently added containers are
 - qBittorrent
 - Jellyfin
 - Heimdall
+- Filebrowser
 ### Indexers
 - Jackett
 - Sonarr
