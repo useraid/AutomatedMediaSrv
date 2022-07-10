@@ -50,6 +50,20 @@ services:
       - 443:443
     restart: unless-stopped
 
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    enviornment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    volumes:
+      - /:/srv
+      - /dockdata/filebrowser/filebrowser.db:/database.db
+    ports:
+      - 8081:80
+    restart: unless-stopped
+
 
 # Indexers
 
