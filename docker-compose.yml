@@ -12,6 +12,7 @@ services:
     volumes:
       - /dockdata/qbittorent/appdata/config:/config
       - /dockdata/qbittorent/downloads:/downloads
+      - /data:/data
     ports:
       - 8090:8090
       - 6881:6881
