@@ -1,6 +1,6 @@
 ## Dockerized Media Server
 
-This script allows to create a automated media server using docker containers.
+This script allows to create an automated media server using docker containers.
 
 The currently added containers are 
 ### UI
@@ -8,6 +8,7 @@ The currently added containers are
 - Jellyfin
 - Heimdall
 - Filebrowser
+- Jellyseerr
 ### Indexers
 - Jackett
 - Sonarr

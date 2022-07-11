@@ -65,6 +65,17 @@ services:
       - 8081:80
     restart: unless-stopped
 
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=Asia/Tashkent
+    ports:
+      - 5055:5055
+    volumes:
+      - /dockdata/jellyseerr:/app/config
+    restart: unless-stopped
 
 # Indexers
 
