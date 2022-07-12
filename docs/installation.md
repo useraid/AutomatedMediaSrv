@@ -1,6 +1,6 @@
 # Installation
 
-## Contents
+## <b>Contents
 - [Prerequisites](empty)
 - [Full Automated Install](empty)
 

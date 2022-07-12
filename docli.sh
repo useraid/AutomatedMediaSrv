@@ -7,9 +7,9 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Asia/Kolkata \
   -p 8096:8096 \
-  -p 8920:8920 `#optional` \
-  -p 7359:7359/udp `#optional` \
-  -p 1900:1900/udp `#optional` \
+  -p 8920:8920  \
+  -p 7359:7359/udp  \
+  -p 1900:1900/udp  \
   -v /dockdata/jellyfin:/config \
   -v /data/tvseries:/data/tvshows \
   -v /data/movies:/data/movies \
