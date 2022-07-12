@@ -11,5 +11,20 @@
 - [Jellyfin](empty)
 - [Portainer](empty)
 
+## Heimdall
 
 ## Jackett
+
+## qBittorrent
+
+## Filebrowser
+
+## Bazarr
+
+## Radarr
+
+## Sonarr
+
+## Jellyfin
+
+## Portainer
