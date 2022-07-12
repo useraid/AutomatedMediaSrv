@@ -1,4 +1,4 @@
 #!/bin/bash
-chmod +x folder.sh
+chmod +x folder.sh docli.sh
 ./folder.sh
-docker-compose up --detach
+./docli.sh
