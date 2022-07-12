@@ -9,6 +9,7 @@
 - [Radarr](empty)
 - [Sonarr](empty)
 - [Jellyfin](empty)
+- [Jellyseerr](empty)
 - [Portainer](empty)
 
 ## Heimdall
@@ -26,5 +27,7 @@
 ## Sonarr
 
 ## Jellyfin
+
+## Jellyseerr
 
 ## Portainer
