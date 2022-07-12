@@ -17,4 +17,4 @@ The currently added containers are
 - Radarr
 - Bazarr
 
-<b>The Documentation for the preject can be [found here.](empty)
+<b>The Documentation for the preject can be [found here.](https://github.com/useraid/AutomatedMediaSrv/tree/main/docs)
