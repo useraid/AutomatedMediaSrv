@@ -5,7 +5,7 @@ cd data
 mkdir tvseries movies
 cd ..
 cd dockdata
-mkdir sonarr radarr qbittorrent jackett jellyfin bazarr heimdall filebrowser
+mkdir sonarr radarr qbittorrent jackett jellyfin bazarr heimdall filebrowser jellyseerr
 cd filebrowser
 touch filebrowser.db
 cd ..
