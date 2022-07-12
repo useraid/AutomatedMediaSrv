@@ -15,4 +15,4 @@ The containers need to be configured before running the server. The Configuratio
 
 ## How to add additional containers
 
-You can configure additional containers and services by referring to [guide found here.](empty)
+You can configure additional containers and services by referring to [guide found here.](https://github.com/useraid/AutomatedMediaSrv/tree/main/docs)
