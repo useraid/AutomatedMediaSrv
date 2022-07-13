@@ -11,6 +11,7 @@ The currently added containers are
 - Heimdall
 - Filebrowser
 - Jellyseerr
+- Portainer
 ### Indexers
 - Jackett
 - Sonarr
