@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Creating Folders.
-cd /
+cd $HOME
 mkdir data dockdata
 cd data
 mkdir tvseries movies
@@ -28,9 +28,9 @@ docker run -d \
   -p 8920:8920  \
   -p 7359:7359/udp  \
   -p 1900:1900/udp  \
-  -v /dockdata/jellyfin:/config \
-  -v /data/tvseries:/data/tvshows \
-  -v /data/movies:/data/movies \
+  -v $HOME/dockdata/jellyfin:/config \
+  -v $HOME/data/tvseries:/data/tvshows \
+  -v $HOME/data/movies:/data/movies \
   --restart unless-stopped \
   linuxserver/jellyfin:latest
 
@@ -44,9 +44,9 @@ docker run -d \
   -p 8090:8090 \
   -p 6881:6881 \
   -p 6881:6881/udp \
-  -v /dockdata/qbittorent/appdata/config:/config \
-  -v /dockdata/qbittorent/downloads:/downloads \
-  -v /data:/data \
+  -v $HOME/dockdata/qbittorent/appdata/config:/config \
+  -v $HOME/dockdata/qbittorent/downloads:/downloads \
+  -v $HOME/data:/data \
   --restart unless-stopped \
   linuxserver/qbittorrent:latest
 
@@ -58,14 +58,14 @@ docker run -d \
   -e TZ=Asia/Kolkata \
   -p 80:80 \
   -p 443:443 \
-  -v /dockdata/heimdall:/config \
+  -v $HOME/dockdata/heimdall:/config \
   --restart unless-stopped \
   linuxserver/heimdall:latest
 
 # Filebrowser
 docker run -d \
     -v /:/srv \
-    -v /dockdata/filebrowser/filebrowser.db:/database.db \
+    -v $HOME/dockdata/filebrowser/filebrowser.db:/database.db \
     -e PUID=1000 \
     -e PGID=1000 \
     -p 8081:80 \
@@ -77,7 +77,7 @@ docker run -d \
  -e LOG_LEVEL=debug \
  -e TZ=Asia/Kolkata \
  -p 5055:5055 \
- -v /dockdata/jellyseerr:/app/config \
+ -v $HOME/dockdata/jellyseerr:/app/config \
  --restart unless-stopped \
  fallenbagel/jellyseerr:latest
 
@@ -98,7 +98,7 @@ docker run -d \
   -e PGID=1000 \
   -e Asia/Kolkata \
   -p 9117:9117 \
-  -v /dockdata/jackett:/config \
+  -v $HOME/dockdata/jackett:/config \
   --restart unless-stopped \
   linuxserver/jackett:latest
 
@@ -109,9 +109,9 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Asia/Kolkata \
   -p 6767:6767 \
-  -v /dockdata/bazarr:/config \
-  -v /data/movies:/movies  \
-  -v /data/tvseries:/tv   \
+  -v $HOME/dockdata/bazarr:/config \
+  -v $HOME/data/movies:/movies  \
+  -v $HOME/data/tvseries:/tv   \
   --restart unless-stopped \
   linuxserver/bazarr:latest
 
@@ -122,9 +122,9 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Asia/Kolkata \
   -p 8989:8989 \
-  -v /dockdata/sonarr:/config \
-  -v /data/tvseries:/tv \
-  -v /dockdata/qbittorent/downloads:/downloads \
+  -v $HOME/dockdata/sonarr:/config \
+  -v $HOME/data/tvseries:/tv \
+  -v $HOME/dockdata/qbittorent/downloads:/downloads \
   --restart unless-stopped \
   linuxserver/sonarr:latest
 
@@ -135,9 +135,9 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Asia/Kolkata \
   -p 7878:7878 \
-  -v /dockdata/radarr/data:/config \
-  -v /data/movies:/movies  \
-  -v /dockdata/qbittorent/downloads:/downloads \
+  -v $HOME/dockdata/radarr/data:/config \
+  -v $HOME/data/movies:/movies  \
+  -v $HOME/dockdata/qbittorent/downloads:/downloads \
   --restart unless-stopped \
   linuxserver/radarr:latest
 
