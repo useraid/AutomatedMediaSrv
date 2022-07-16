@@ -19,3 +19,18 @@ The currently added containers are
 - Bazarr
 
 <b>The Documentation for the project can be [found here.](https://github.com/useraid/AutomatedMediaSrv/tree/main/docs)
+
+# Quick Setup
+
+Download Script using `curl` 
+```
+curl -O https://raw.githubusercontent.com/useraid/AutomatedMediaSrv/main/installer.sh
+```
+Make it executable 
+```
+chmod +x installer.sh
+```
+Run it
+```
+./installer.sh
+```
