@@ -2,8 +2,7 @@
 # filename: installer.sh
 
 # check if the reboot flag file exists. 
-# We created this file before rebooting.
-if [ ! -f /var/run/resume-after-reboot ]; then
+if [ ! -f /home/$USER/resume-after-reboot ]; then
   echo "running script for the first time.."
 
   # Updating System
@@ -16,26 +15,14 @@ if [ ! -f /var/run/resume-after-reboot ]; then
   sudo groupadd docker # Creating docker group
   sudo usermod -aG docker $USER # Adding current user to docker group
 
-
-  # Preparation for reboot
-  script="bash /installer.sh"
-  
-  # add this script to zsh so it gets triggered immediately after reboot
-  # change it to .bashrc if using bash shell
-  sudo echo "$script" >> ~/.bashrc 
-  
   # create a flag file to check if we are resuming from reboot.
-  sudo touch /var/run/resume-after-reboot
+  touch /home/$USER/resume-after-reboot
   
   echo "rebooting.."
   sudo reboot
   
 else 
   echo "resuming script after reboot.."
-  
-  # Remove the line that we added in zshrc
-  sed -i '/bash/d' ~/.bashrc 
-  
   # remove the temporary file that we created to check for reboot
   sudo rm -f /var/run/resume-after-reboot
 
