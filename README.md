@@ -32,5 +32,5 @@ chmod +x installer.sh
 ```
 Run it
 ```
-./installer.sh
+sudo ./installer.sh
 ```
