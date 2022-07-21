@@ -22,7 +22,7 @@ if [ ! -f /var/run/resume-after-reboot ]; then
   
   # add this script to zsh so it gets triggered immediately after reboot
   # change it to .bashrc if using bash shell
-  echo "$script" >> ~/.bashrc 
+  sudo echo "$script" >> ~/.bashrc 
   
   # create a flag file to check if we are resuming from reboot.
   sudo touch /var/run/resume-after-reboot
