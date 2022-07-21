@@ -15,4 +15,4 @@ The containers need to be configured before running the server. The Configuratio
 
 ## How to add additional containers
 
-You can configure additional containers and services by referring to [guide found here.](https://useraid.github.io/resources/willbeadded.html)
+You can configure additional containers and services by referring to [guide found here.](https://docs.portainer.io/user/docker/containers/add)
