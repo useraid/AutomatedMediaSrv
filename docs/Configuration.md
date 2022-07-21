@@ -22,12 +22,14 @@ Choose and add your favourite indexers using the + button and test the items add
 Make note of the api key.
 
 ## qBittorrent
-
+- Login using Username - `admin` Password - `adminadmin`
 ## Filebrowser
 
 This service would allow you to browse the root directory of the server.
 
 ## Bazarr
+
+- Add Sonarr and Radarr api keys.
 
 ## Radarr
 
@@ -35,7 +37,15 @@ This service would allow you to browse the root directory of the server.
 
 ## Jellyfin
 
+- Create an account (This is the default admin account)
+- Add the media libraries from the administration dashboard.
+
 ## Jellyseerr
 
+- Create an account (This is the default admin account)
+- Add Sonarr and Radarr servers using their respective ports and ip addresses.
+- Add different users with different permissions.
 ## Portainer
 
+- Create an account (This is the default admin account)
+- You can manage the containers from here.

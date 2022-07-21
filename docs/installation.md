@@ -1,10 +1,48 @@
 # Installation
 
 ## <b>Contents
-- [Prerequisites](empty)
-- [Installing all the containers](empty)
-- [Installing Containers using compose file](empty)
 
+- Method I (Quick Setup)
+
+    - [Prerequisites](empty)
+    - [Installer Script](empty)
+
+
+- Method II
+
+    - [Prerequisites](empty)
+    - [Installing all the containers](empty)
+    - [Installing Containers using compose file](empty)
+
+# Method 1
+
+## Prerequsites
+
+Install Prerequisites
+```
+sudo apt install curl
+```
+## Installer Script
+
+Download Script using `curl` 
+```
+curl -O https://raw.githubusercontent.com/useraid/AutomatedMediaSrv/main/installer.sh
+```
+Make it executable 
+```
+chmod +x installer.sh
+```
+Run it
+```
+sudo ./installer.sh
+```
+After the system reboots, run it once again
+```
+sudo ./installer.sh
+```
+
+
+# Method II
 
 ## Prerequisites
 
