@@ -2,7 +2,7 @@
 # filename: installer.sh
 
 # check if the reboot flag file exists. 
-if [ ! -f /home/$USER/resume-after-reboot ]; then
+if [ ! -f /home/pre ]; then
   echo "running script for the first time.."
 
   # Updating System
@@ -16,7 +16,7 @@ if [ ! -f /home/$USER/resume-after-reboot ]; then
   sudo usermod -aG docker $USER # Adding current user to docker group
 
   # create a flag file to check if we are resuming from reboot.
-  touch /home/$USER/resume-after-reboot
+  touch /home/pre
   
   echo "rebooting.."
   sudo reboot
@@ -24,7 +24,7 @@ if [ ! -f /home/$USER/resume-after-reboot ]; then
 else 
   echo "resuming script after reboot.."
   # remove the temporary file that we created to check for reboot
-  sudo rm -f /var/run/resume-after-reboot
+  sudo rm -f /home/pre
 
   # continue with rest of the script
   # Creating folders
