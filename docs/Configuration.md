@@ -1,4 +1,4 @@
-# Configuration
+# Configuration (Pending)
 
 ## <b>Contents
 - [Heimdall](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/Configuration.md#Heimdall)
