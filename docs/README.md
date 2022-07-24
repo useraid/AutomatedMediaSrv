@@ -4,7 +4,7 @@ This is the Documentation for the Dockerized Media Server. It contains sublinks 
 ```
 git clone https://github.com/useraid/AutomatedMediaSrv.git
 ```
-This project and run and tested on Debian 11 (bullseye) minimal server installation. The Guide to set it up can be [found here.](https://useraid.github.io/resources/willbeadded.html)
+This project and run and tested on Debian 11 (bullseye) minimal server installation. The Guide to set it up can be [found here.](https://www.fosslinux.com/49956/install-debian-11-minimal-server.htm)
 ## How to install and run
 
 The Installation Guide for the server can be [found here.](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/installation.md)
@@ -15,4 +15,4 @@ The containers need to be configured before running the server. The Configuratio
 
 ## How to add additional containers
 
-You can configure additional containers and services by referring to [guide found here.](https://useraid.github.io/resources/willbeadded.html)
+You can configure additional containers and services by referring to [guide found here.](https://docs.portainer.io/user/docker/containers/add)
