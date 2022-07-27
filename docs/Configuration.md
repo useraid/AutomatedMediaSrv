@@ -1,4 +1,4 @@
-# Configuration (Pending)
+# Configuration 
 
 ## <b>Contents
 - [Heimdall](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/Configuration.md#Heimdall)
@@ -30,10 +30,17 @@ This service would allow you to browse the root directory of the server.
 ## Bazarr
 
 - Add Sonarr and Radarr api keys.
+- Add the Providers (Recommended OpenSubtitles, SubScene)
 
 ## Radarr
 
+- Add the qBittorrent in the Download Clients tab.
+- Add the indexers from jackett into the Indexers tab.
+
 ## Sonarr
+
+- Add the qBittorrent in the Download Clients tab.
+- Add the indexers from jackett into the Indexers tab.
 
 ## Jellyfin
 
