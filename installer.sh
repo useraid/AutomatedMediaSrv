@@ -90,6 +90,7 @@ else
 
 	# Filebrowser
 	docker run -d \
+		--name=filebrowser \
 			-v /:/srv \
 			-v $HOME/dockdata/filebrowser/filebrowser.db:/database.db \
 			-e PUID=1000 \
@@ -117,16 +118,16 @@ else
 
 	# Indexers
 
-	# Jackett
+	# Prowlarr
 	docker run -d \
-		--name=jackett \
-		-e PUID=1000 \
-		-e PGID=1000 \
-		-e Asia/Kolkata \
-		-p 9117:9117 \
-		-v $HOME/dockdata/jackett:/config \
-		--restart unless-stopped \
-		linuxserver/jackett:latest
+  	--name=prowlarr \
+  	-e PUID=1000 \
+ 	-e PGID=1000 \
+  	-e TZ=Europe/London \
+  	-p 9696:9696 \
+ 	-v $HOME/dockdata/prowlarr:/config \
+ 	--restart unless-stopped \
+  	linuxserver/prowlarr:develop
 
 	# Bazarr
 	docker run -d \
