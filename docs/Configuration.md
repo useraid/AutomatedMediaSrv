@@ -2,7 +2,7 @@
 
 ## <b>Contents
 - [Heimdall](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/Configuration.md#Heimdall)
-- [Jackett](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/Configuration.md#Jackett)
+- [Prowlarr](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/Configuration.md#Prowlarr)
 - [qBittorrent](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/Configuration.md#qBittorrent)
 - [Filebrowser](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/Configuration.md#Filebrowser)
 - [Bazarr](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/Configuration.md#Bazarr)
@@ -16,13 +16,14 @@
 
 Add the services running on the docker containers with the format http://ip-addr:port. This will allow easier access to all the running containers without needing to put in the ip address and remembering different ports for different services.
 
-## Jackett
+## Prowlarr
 
 Choose and add your favourite indexers using the + button and test the items added to the list using the test button on top right.
-Make note of the api key.
 
 ## qBittorrent
+
 - Login using Username - `admin` Password - `adminadmin`
+
 ## Filebrowser
 
 This service would allow you to browse the root directory of the server.
@@ -35,12 +36,10 @@ This service would allow you to browse the root directory of the server.
 ## Radarr
 
 - Add the qBittorrent in the Download Clients tab.
-- Add the indexers from jackett into the Indexers tab.
 
 ## Sonarr
 
 - Add the qBittorrent in the Download Clients tab.
-- Add the indexers from jackett into the Indexers tab.
 
 ## Jellyfin
 
@@ -52,6 +51,7 @@ This service would allow you to browse the root directory of the server.
 - Create an account (This is the default admin account)
 - Add Sonarr and Radarr servers using their respective ports and ip addresses.
 - Add different users with different permissions.
+
 ## Portainer
 
 - Create an account (This is the default admin account)
