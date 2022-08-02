@@ -4,6 +4,44 @@
 # check if the reboot flag file exists. 
 if [ ! -f /home/pre ]; then
   echo "running script for the first time.."
+	function get_distro() {
+		if [[ -f /etc/os-release ]]
+		then
+			source /etc/os-release
+			echo $ID
+		else
+			uname
+		fi
+	}
+	case $(get_distro) in
+		fedora)
+			echo "Installing Webmin and Cockpit"
+			wget http://prdownloads.sourceforge.net/webadmin/webmin-1.998-1.noarch.rpm
+			sudo yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect
+			sudo rpm -U webmin-1.998-1.noarch.rpm
+			sudo dnf install cockpit
+			sudo systemctl enable --now cockpit.socket
+			sudo firewall-cmd --add-service=cockpit
+			sudo firewall-cmd --add-service=cockpit --permanent
+			;;
+		ubuntu)
+			echo "Installing Webmin and Cockpit"
+			wget http://prdownloads.sourceforge.net/webadmin/webmin_1.998_all.deb
+			sudo dpkg --install webmin_1.998_all.deb
+			. /etc/os-release
+			sudo apt install -t ${VERSION_CODENAME}-backports cockpit
+			;;
+		debian)
+			echo "Installing Webmin and Cockpit"
+			wget http://prdownloads.sourceforge.net/webadmin/webmin_1.998_all.deb
+			sudo dpkg --install webmin_1.998_all.deb
+			. /etc/os-release
+			echo "deb http://deb.debian.org/debian ${VERSION_CODENAME}-backports main" > \
+				/etc/apt/sources.list.d/backports.list
+			apt update
+			apt install -t ${VERSION_CODENAME}-backports cockpit
+			;;
+	esac
 
   # Updating System
   sudo apt update
@@ -34,7 +72,7 @@ else
 	mkdir tvseries movies
 	cd ..
 	cd dockdata
-	mkdir sonarr radarr qbittorrent jackett jellyfin bazarr heimdall filebrowser jellyseerr
+	mkdir sonarr radarr qbittorrent prowlarr jellyfin bazarr heimdall filebrowser jellyseerr
 	cd filebrowser
 	touch filebrowser.db
 	cd ..
