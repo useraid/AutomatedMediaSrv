@@ -1,6 +1,4 @@
 #!/bin/bash
-# filename: installer.sh
-
 # check if the reboot flag file exists. 
 if [ ! -f /home/pre ]; then
   echo "running script for the first time.."
@@ -188,7 +186,7 @@ else
 		-e TZ=Asia/Kolkata \
 		-p 8989:8989 \
 		-v $HOME/dockdata/sonarr:/config \
-		-v $HOME/data/tvseries:/tv \
+		-v $HOME/data:/data \
 		-v $HOME/dockdata/qbittorent/downloads:/downloads \
 		--restart unless-stopped \
 		linuxserver/sonarr:latest
@@ -201,7 +199,7 @@ else
 		-e TZ=Asia/Kolkata \
 		-p 7878:7878 \
 		-v $HOME/dockdata/radarr/data:/config \
-		-v $HOME/data/movies:/movies  \
+		-v $HOME/data:/data  \
 		-v $HOME/dockdata/qbittorent/downloads:/downloads \
 		--restart unless-stopped \
 		linuxserver/radarr:latest
@@ -213,7 +211,7 @@ else
 	echo "The installation is complete now, proceed with the configuration of the containers"
 	echo "IP address is" 
 	hostname -I
-	printf "Use the following ports for the services: \n Portainer :9000 \n Jellyfin :8096 \n qBittorrent :8090 \n Heimdall :80(default http port) \n Filebrowser :8081 \n Jellyseerr :5055 \n Jackett :9117 \n Bazarr :6767 \n Radarr :7878 \n Sonarr :8989 \n"
+	printf "Use the following ports for the services: \n Portainer :9000 \n Jellyfin :8096 \n qBittorrent :8090 \n Heimdall :80(default http port) \n Filebrowser :8081 \n Jellyseerr :5055 \n Prowlarr :9696 \n Bazarr :6767 \n Radarr :7878 \n Sonarr :8989 \n"
 	echo "Add these services to Heimdall so you don't need to keep track of the IP addresses and the Port numbers"
 
 fi
