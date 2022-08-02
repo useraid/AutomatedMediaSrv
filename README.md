@@ -9,17 +9,24 @@ This script allows to create an automated media server using docker containers.
 
 The currently added containers are 
 ### UI
+
 - qBittorrent
 - Jellyfin
 - Heimdall
 - Filebrowser
 - Jellyseerr
 - Portainer
-### Indexers
-- Jackett
+
+### Indexers (arr apps)
+
+- Prowlarr
 - Sonarr
 - Radarr
 - Bazarr
+### Monitoring and Management
+
+- Cockpit
+- Webmin
 
 <b>The Documentation for the project can be [found here.](https://github.com/useraid/AutomatedMediaSrv/tree/main/docs)
 
