@@ -1,5 +1,4 @@
 #!/bin/bash
-# check if the reboot flag file exists. 
 if [ ! -f /home/pre ]; then
   echo "running script for the first time.."
 	function get_distro() {
@@ -13,26 +12,29 @@ if [ ! -f /home/pre ]; then
 	}
 	case $(get_distro) in
 		fedora)
-			echo "Installing Webmin and Cockpit"
+			echo "Installing Webmin"
 			wget http://prdownloads.sourceforge.net/webadmin/webmin-1.998-1.noarch.rpm
 			sudo yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect
 			sudo rpm -U webmin-1.998-1.noarch.rpm
+			echo "Installing Cockpit"
 			sudo dnf install cockpit
 			sudo systemctl enable --now cockpit.socket
 			sudo firewall-cmd --add-service=cockpit
 			sudo firewall-cmd --add-service=cockpit --permanent
 			;;
 		ubuntu)
-			echo "Installing Webmin and Cockpit"
+			echo "Installing Webmin"
 			wget http://prdownloads.sourceforge.net/webadmin/webmin_1.998_all.deb
 			sudo dpkg --install webmin_1.998_all.deb
+			echo "Installing Cockpit"
 			. /etc/os-release
 			sudo apt install -t ${VERSION_CODENAME}-backports cockpit
 			;;
 		debian)
-			echo "Installing Webmin and Cockpit"
+			echo "Installing Webmin"
 			wget http://prdownloads.sourceforge.net/webadmin/webmin_1.998_all.deb
 			sudo dpkg --install webmin_1.998_all.deb
+			echo "Installing Cockpit"
 			. /etc/os-release
 			echo "deb http://deb.debian.org/debian ${VERSION_CODENAME}-backports main" > \
 				/etc/apt/sources.list.d/backports.list
@@ -42,12 +44,15 @@ if [ ! -f /home/pre ]; then
 	esac
 
   # Updating System
+  echo "Updating System"
   sudo apt update
   sudo apt upgrade -y # remove -y flag if it's not a new install and you want to check dependencies.
 
   # Installing Docker
+  echo "Installing Docker"
   curl -fsSL https://get.docker.com -o docker.sh
   sh docker.sh
+  echo "Add current user to Docker group"
   sudo groupadd docker # Creating docker group
   sudo usermod -aG docker $USER # Adding current user to docker group
 
@@ -64,6 +69,7 @@ else
 
   # continue with rest of the script
   # Creating folders
+  echo "Creating the folders for Media and Services config"
 	cd $HOME    
 	mkdir data dockdata
 	cd data
@@ -81,6 +87,7 @@ else
 
 	# Pulling and running the docker containers
 	# Jellyfin
+	echo "Adding Jellyfin"
 	docker run -d \
 		--name=jellyfin \
 		-e PUID=1000 \
@@ -97,6 +104,7 @@ else
 		linuxserver/jellyfin:latest
 
 	# qBittorrent
+	echo "Adding qBittorrent"
 	docker run -d \
 		--name=qbittorrent \
 		-e PUID=1000 \
@@ -113,6 +121,7 @@ else
 		linuxserver/qbittorrent:latest
 
 	# Heimdall
+	echo "Adding Heimdall"
 	docker run -d \
 		--name=heimdall \
 		-e PUID=1000 \
@@ -125,6 +134,7 @@ else
 		linuxserver/heimdall:latest
 
 	# Filebrowser
+	echo "Adding Filebrowser"
 	docker run -d \
 		--name=filebrowser \
 			-v /:/srv \
@@ -135,6 +145,7 @@ else
 			filebrowser/filebrowser
 
 	# Jellyseerr
+	echo "Adding Jellyseerr"
 	docker run -d \
 	--name jellyseerr \
 	-e LOG_LEVEL=debug \
@@ -145,6 +156,7 @@ else
 	fallenbagel/jellyseerr:latest
 
 	# Portainer
+	echo "Adding Portainer"
 	docker volume create portainer_data
 	docker run -d -p 9000:9000 -p 8000:8000 -p 9443:9443 --name portainer \
 			--restart=always \
@@ -153,6 +165,8 @@ else
 			portainer/portainer-ce:latest
 
 	# Indexers
+
+	echo "Installing Indexers - Prowlarr, Radarr, Sonarr and Bazarr"
 
 	# Prowlarr
 	docker run -d \
