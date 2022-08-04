@@ -16,3 +16,7 @@ The containers need to be configured before running the server. The Configuratio
 ## How to add additional containers
 
 You can configure additional containers and services by referring to [guide found here.](https://docs.portainer.io/user/docker/containers/add)
+
+## Default passwords for services
+
+You can find all the default passwords for the running services [here.](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/Passwords.md)
