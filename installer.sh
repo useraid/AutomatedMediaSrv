@@ -164,6 +164,15 @@ else
 			-v portainer_data:/data \
 			portainer/portainer-ce:latest
 
+	# Watchtower
+	echo "Adding Watchtower"
+	docker run -d \
+	--name watchtower   \
+	--restart always   \
+	-v /var/run/docker.sock:/var/run/docker.sock   \
+	v2tec/watchtower   \
+	-i 3600	
+
 	# Indexers
 
 	echo "Installing Indexers - Prowlarr, Radarr, Sonarr and Bazarr"
