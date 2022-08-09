@@ -128,7 +128,7 @@ Qbittorrent deployed on port 8090
 Heimdall deployed on port 80 (default port)
 FileBrowser deployed on port 8081
 Jellyseerr deployed on port 5055
-Portainer deployed on port 9443"
+Portainer deployed on port 9000"
 echo ""
 echo "Indexers: "
 echo "Prowlarr deployed on port 9696
