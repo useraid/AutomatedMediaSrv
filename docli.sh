@@ -122,3 +122,19 @@ docker run -d \
   -v $HOME/dockdata/qbittorent/downloads:/downloads \
   --restart unless-stopped \
   linuxserver/radarr:latest
+
+echo "Jellyfin deployed on port 8096
+Qbittorrent deployed on port 8090
+Heimdall deployed on port 80 (default port)
+FileBrowser deployed on port 8081
+Jellyseerr deployed on port 5055
+Portainer deployed on port 9443"
+echo ""
+echo "Indexers: "
+echo "Prowlarr deployed on port 9696
+Bazarr deployed on port 6767
+Sonarr deployed on port 8989
+Radarr deployed on port 7878"
+echo "You can add these ports along with ip while setting up the Heimdall"
+echo ""
+echo "Installation Complete!"
