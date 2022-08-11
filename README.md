@@ -32,6 +32,7 @@ The currently added containers are
 - Webmin
 
 <b>The Documentation for the project can be [found here.](https://github.com/useraid/AutomatedMediaSrv/tree/main/docs)
+Currently supported and tested distros are can be [found here.](https://github.com/useraid/AutomatedMediaSrv/tree/main/docs/testedon.md)
 
 # Quick Setup
 
