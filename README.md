@@ -30,6 +30,7 @@ The currently added containers are
 
 - Cockpit
 - Webmin
+- Webhook Based Notification Service
 
 <b>The Documentation for the project can be [found here.](https://github.com/useraid/AutomatedMediaSrv/tree/main/docs)
 Currently supported and tested distros are can be [found here.](https://github.com/useraid/AutomatedMediaSrv/tree/main/docs/testedon.md)
