@@ -237,4 +237,9 @@ else
 	printf "Use the following ports for the services: \n Portainer :9000 \n Jellyfin :8096 \n qBittorrent :8090 \n Heimdall :80(default http port) \n Filebrowser :8081 \n Jellyseerr :5055 \n Prowlarr :9696 \n Bazarr :6767 \n Radarr :7878 \n Sonarr :8989 \n"
 	echo "Add these services to Heimdall so you don't need to keep track of the IP addresses and the Port numbers"
 
+	# Server Notifications 
+	
+	echo "To setup Notifications answer the following: "
+	./cron.sh
+
 fi
