@@ -1,5 +1,5 @@
 #!/bin/bash
-url="webhook_url"
+url="$(cat webhook.txt)"
 websites_list="http://IP_ADDR:PORT"
 curl -H "Content-Type: application/json" -X POST -d '{"content":"'" $(date) \n***Services*** "'"}'  $url
 for website in ${websites_list} ; do
