@@ -1,6 +1,6 @@
 #!/bin/bash
 url="$(cat webhook.txt)"
-websites_list="http://IP_ADDR:PORT"
+websites_list="$(cat ip.txt):8096 $(cat ip.txt):9000 $(cat ip.txt):8989 $(cat ip.txt):7878 $(cat ip.txt):8090 $(cat ip.txt):5055"
 curl -H "Content-Type: application/json" -X POST -d '{"content":"'" $(date) \n***Services*** "'"}'  $url
 for website in ${websites_list} ; do
         status_code=$(curl --write-out %{http_code} --silent --output /dev/null -L ${website})
