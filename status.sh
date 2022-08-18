@@ -19,8 +19,7 @@ for website in ${websites_list} ; do
             elif [[ "$website" = http://*.*.*.*:5055 ]] ; then
                 domain="Jellyseerr"
             fi
-            # POST request to Discord Webhook with the domain name and the HTTP status code
-            curl -H "Content-Type: application/json" -X POST -d '{"content":"'"${website} is down with SC : ${status_code}"'"}'  $url
+            curl -H "Content-Type: application/json" -X POST -d '{"content":"'"${domain} is down with SC : ${status_code}"'"}'  $url
         else
             if [[ "$website" = http://*.*.*.*:8096 ]] ; then
                 domain="Jellyfin"
