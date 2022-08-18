@@ -1,6 +1,27 @@
 #!/bin/bash
+
 if [ ! -f /home/pre ]; then
   echo "running script for the first time.."
+
+  # Introduction
+
+  sudo apt install figlet
+  echo "AutomatedMediaSrv" | figlet
+
+  # Updating System
+
+  echo "Updating System"
+  sudo apt update
+  sudo apt upgrade -y # remove -y flag if it's not a new install and you want to check dependencies.
+
+  # Installing Docker
+
+  echo "Installing Docker"
+  curl -fsSL https://get.docker.com -o docker.sh
+  sh docker.sh
+  echo "Add current user to Docker group"
+  sudo groupadd docker # Creating docker group
+  sudo usermod -aG docker $USER # Adding current user to docker group
 	function get_distro() {
 		if [[ -f /etc/os-release ]]
 		then
@@ -43,18 +64,6 @@ if [ ! -f /home/pre ]; then
 			;;
 	esac
 
-  # Updating System
-  echo "Updating System"
-  sudo apt update
-  sudo apt upgrade -y # remove -y flag if it's not a new install and you want to check dependencies.
-
-  # Installing Docker
-  echo "Installing Docker"
-  curl -fsSL https://get.docker.com -o docker.sh
-  sh docker.sh
-  echo "Add current user to Docker group"
-  sudo groupadd docker # Creating docker group
-  sudo usermod -aG docker $USER # Adding current user to docker group
 
   # create a flag file to check if we are resuming from reboot.
   touch /home/pre
@@ -69,6 +78,7 @@ else
 
   # continue with rest of the script
   # Creating folders
+
   echo "Creating the folders for Media and Services config"
 	cd $HOME    
 	mkdir data dockdata
@@ -229,6 +239,11 @@ else
 
 	echo "Docker Configuration Complete"
 
+	# Server Notifications 
+	
+	echo "To setup Notifications answer the following: "
+	./cron.sh
+
 	# Printing out the ip address and ports
 
 	echo "The installation is complete now, proceed with the configuration of the containers"
@@ -236,10 +251,5 @@ else
 	hostname -I
 	printf "Use the following ports for the services: \n Portainer :9000 \n Jellyfin :8096 \n qBittorrent :8090 \n Heimdall :80(default http port) \n Filebrowser :8081 \n Jellyseerr :5055 \n Prowlarr :9696 \n Bazarr :6767 \n Radarr :7878 \n Sonarr :8989 \n"
 	echo "Add these services to Heimdall so you don't need to keep track of the IP addresses and the Port numbers"
-
-	# Server Notifications 
-	
-	echo "To setup Notifications answer the following: "
-	./cron.sh
 
 fi
