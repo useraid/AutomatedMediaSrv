@@ -5,7 +5,7 @@ if [ ! -f /home/pre ]; then
 
   # Introduction
 
-  sudo apt install figlet
+  sudo apt-get -y install figlet curl 
   echo "AutomatedMediaSrv" | figlet
 
   # Updating System
@@ -31,7 +31,7 @@ if [ ! -f /home/pre ]; then
 			uname
 		fi
 	}
-	case $(get_distro) in
+	case $(get_distro) in # Installing Server management Tools
 		fedora)
 			echo "Installing Webmin"
 			wget http://prdownloads.sourceforge.net/webadmin/webmin-1.998-1.noarch.rpm
@@ -242,6 +242,7 @@ else
 	# Server Notifications 
 	
 	echo "To setup Notifications answer the following: "
+	chmod +x cron.sh
 	./cron.sh
 
 	# Printing out the ip address and ports
