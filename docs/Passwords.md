@@ -8,3 +8,4 @@
 | Cockpit       | root        | `your root password`|
 | Webmin        | root        | `your root password`|
 | Filebrowser   | admin       | admin               |
+| Portainer     |`set at start`   | `set at start`    |
