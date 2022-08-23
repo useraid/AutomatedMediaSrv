@@ -10,9 +10,9 @@ services:
       - TZ=Asia/Kolkata
       - WEBUI_PORT=8090 
     volumes:
-      - /dockdata/qbittorent/appdata/config:/config
-      - /dockdata/qbittorent/downloads:/downloads
-      - /data:/data
+      - $HOME/dockdata/qbittorrent/appdata/config:/config
+      - $HOME/dockdata/qbittorrent/downloads:/downloads
+      - $HOME/data:/data
     ports:
       - 8090:8090
       - 6881:6881
@@ -27,9 +27,8 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - /dockdata/jellyfin:/config
-      - /data/tvseries:/data/tvshows
-      - /data/movies:/data/movies
+      - $HOME/dockdata/jellyfin:/config
+      - $HOME/data/:/data/
     ports:
       - 8096:8096
       - 8920:8920 
@@ -45,7 +44,7 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - /dockdata/heimdall:/config
+      - $HOME/dockdata/heimdall:/config
     ports:
       - 80:80
       - 443:443
@@ -60,7 +59,7 @@ services:
       - TZ=Asia/Kolkata
     volumes:
       - /:/srv
-      - /dockdata/filebrowser/filebrowser.db:/database.db
+      - $HOME/dockdata/filebrowser/filebrowser.db:/database.db
     ports:
       - 8081:80
     restart: unless-stopped
@@ -74,23 +73,23 @@ services:
     ports:
       - 5055:5055
     volumes:
-      - /dockdata/jellyseerr:/app/config
+      - $HOME/dockdata/jellyseerr:/app/config
     restart: unless-stopped
 
 # Indexers
 
-  jackett:
-    image: linuxserver/jackett:latest
-    container_name: jackett
+  prowlarr:
+    image: linuxserver/prowlarr:develop
+    container_name: prowlarr
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Kolkata
       - AUTO_UPDATE=true 
     volumes:
-      - /dockdata/jackett:/config
+      - $HOME/dockdata/prowlarr:/config
     ports:
-      - 9117:9117
+      - 9696:9696
     restart: unless-stopped
 
   bazarr:
@@ -101,9 +100,8 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - /dockdata/bazarr:/config
-      - /data/movies:/movies 
-      - /data/tvseries:/tv 
+      - $HOME/dockdata/bazarr:/config
+      - $HOME/data:/data 
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -116,9 +114,9 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - /dockdata/sonarr:/config
-      - /data/tvseries:/tv 
-      - /dockdata/qbittorent/downloads:/downloads 
+      - $HOME/dockdata/sonarr:/config
+      - $HOME/data/:/data
+      - $HOME/dockdata/qbittorent/downloads:/downloads 
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -131,9 +129,9 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - /dockdata/radarr/data:/config
-      - /data/movies:/movies 
-      - /dockdata/qbittorent/downloads:/downloads 
+      - $HOME/dockdata/radarr/data:/config
+      - $HOME/data/:/data/
+      - $HOME/dockdata/qbittorrent/downloads:/downloads 
     ports:
       - 7878:7878
     restart: unless-stopped
