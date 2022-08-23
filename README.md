@@ -53,3 +53,10 @@ After the system reboots, run it once again
 ```
 sudo ./installer.sh
 ```
+
+# Future of project
+
+***This project is open for contributions.***
+
+- Adding progress bar
+- Better compatibility

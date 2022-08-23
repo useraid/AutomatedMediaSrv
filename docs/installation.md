@@ -4,15 +4,16 @@
 
 - Method I (Quick Setup)
 
-    - [Prerequisites](empty)
-    - [Installer Script](empty)
+    - [Prerequisites](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/installation.md#prerequsites)
+    - [Installer Script](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/installation.md#installer-script)
+    - [Using `git`]()
 
 
 - Method II
 
-    - [Prerequisites](empty)
-    - [Installing all the containers](empty)
-    - [Installing Containers using compose file](empty)
+    - [Prerequisites](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/installation.md#prerequisites)
+    - [Installing all the containers](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/installation.md#installing-all-the-containers)
+    - [Installing Containers using compose file](https://github.com/useraid/AutomatedMediaSrv/blob/main/docs/installation.md#installing-containers-using-compose-file)
 
 # Method 1
 
@@ -40,7 +41,24 @@ After the system reboots, run it once again
 ```
 sudo ./installer.sh
 ```
+## Use `git` to pull repository
 
+Use `git clone` to download full repository.
+```
+git clone https://github.com/useraid/AutomatedMediaSrv.git
+```
+Make it executable 
+```
+chmod +x installer.sh
+```
+Run it
+```
+sudo ./installer.sh
+```
+After the system reboots, run it once again
+```
+sudo ./installer.sh
+```
 
 # Method II
 
