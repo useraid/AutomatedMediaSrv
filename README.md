@@ -49,10 +49,6 @@ Run it
 ```
 sudo ./installer.sh
 ```
-After the system reboots, run it once again
-```
-sudo ./installer.sh
-```
 
 # Future of project
 

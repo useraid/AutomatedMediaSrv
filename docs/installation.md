@@ -37,10 +37,7 @@ Run it
 ```
 sudo ./installer.sh
 ```
-After the system reboots, run it once again
-```
-sudo ./installer.sh
-```
+
 ## Use `git` to pull repository
 
 Use `git clone` to download full repository.
@@ -52,10 +49,6 @@ Make it executable
 chmod +x installer.sh
 ```
 Run it
-```
-sudo ./installer.sh
-```
-After the system reboots, run it once again
 ```
 sudo ./installer.sh
 ```
