@@ -1,7 +1,5 @@
 #/bin/bash
-
-echo "Enter the IP address : "
-read ip
+ip=$(hostname -I | cut -d' ' -f1)
 echo "Enter the Webhook URL : "
 read webhook
 echo http://$ip > ip.txt
