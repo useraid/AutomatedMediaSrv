@@ -1,9 +1,21 @@
 #!/bin/bash
 
 # Banner
-
-sudo apt-get -y install figlet curl 
-echo "AutomatedMediaSrv" | figlet
+cat << EOF
+ █████╗ ██╗   ██╗████████╗ ██████╗ ███╗   ███╗ █████╗ ████████╗███████╗██████╗ 
+██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗████╗ ████║██╔══██╗╚══██╔══╝██╔════╝██╔══██╗
+███████║██║   ██║   ██║   ██║   ██║██╔████╔██║███████║   ██║   █████╗  ██║  ██║
+██╔══██║██║   ██║   ██║   ██║   ██║██║╚██╔╝██║██╔══██║   ██║   ██╔══╝  ██║  ██║
+██║  ██║╚██████╔╝   ██║   ╚██████╔╝██║ ╚═╝ ██║██║  ██║   ██║   ███████╗██████╔╝
+╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═════╝ 
+                                                                               
+███╗   ███╗███████╗██████╗ ██╗ █████╗ ███████╗██████╗ ██╗   ██╗                
+████╗ ████║██╔════╝██╔══██╗██║██╔══██╗██╔════╝██╔══██╗██║   ██║                
+██╔████╔██║█████╗  ██║  ██║██║███████║███████╗██████╔╝██║   ██║                
+██║╚██╔╝██║██╔══╝  ██║  ██║██║██╔══██║╚════██║██╔══██╗╚██╗ ██╔╝                
+██║ ╚═╝ ██║███████╗██████╔╝██║██║  ██║███████║██║  ██║ ╚████╔╝                 
+╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝  ╚═══╝    
+EOF
 
 # Updating System
 
@@ -12,14 +24,23 @@ sudo apt update
 sudo apt upgrade -y # remove -y flag if it's not a new install and you want to check dependencies.
 
 # Installing Docker
+echo "Checking Dependencies"
+# Curl
+if ! command -v curl &> /dev/null
+then
+    echo "Installing Curl"
+    sudo apt-get -y install curl
+fi
+# Docker
+if ! command -v docker &> /dev/null
+then
+    echo "Installing Docker"
+    curl -sSL https://get.docker.com/ | sh
+    sudo groupadd docker # Creating docker group
+    sudo usermod -aG docker $USER # Adding current user to docker group
+    newgrp docker # Refreshing permissions of current session
+fi
 
-echo "Installing Docker"
-curl -fsSL https://get.docker.com -o docker.sh
-sh docker.sh
-echo "Add current user to Docker group"
-sudo groupadd docker # Creating docker group
-sudo usermod -aG docker $USER # Adding current user to docker group
-newgrp docker # Refreshing permissions of current session
 function get_distro() {
     if [[ -f /etc/os-release ]]
     then
@@ -62,11 +83,8 @@ case $(get_distro) in # Installing Server management Tools
         ;;
 esac
 
-cd $HOME    
-mkdir data dockdata
 mkdir -p $HOME/dockdata/filebrowser
 touch $HOME/dockdata/filebrowser/filebrowser.db
-mkdir tvseries movies
 
 # Pulling and running the docker containers
 # Jellyfin
