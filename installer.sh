@@ -17,6 +17,12 @@ cat << EOF
 ╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝  ╚═══╝    
 EOF
 
+# Declaring Variables
+
+GUID=$(id -g)
+SID=$(id -u)
+TIMEZONE=$(cat /etc/timezone)
+
 # Updating System
 
 echo "Updating System"
@@ -91,9 +97,9 @@ touch $HOME/dockdata/filebrowser/filebrowser.db
 echo "Adding Jellyfin"
 docker run -d \
     --name=jellyfin \
-    -e PUID=1000 \
-    -e PGID=1000 \
-    -e TZ=Asia/Kolkata \
+    -e PUID=$SID \
+    -e PGID=$GUID \
+    -e TZ=$TIMEZONE \
     -p 8096:8096 \
     -p 8920:8920  \
     -p 7359:7359/udp  \
@@ -108,9 +114,9 @@ docker run -d \
 echo "Adding qBittorrent"
 docker run -d \
     --name=qbittorrent \
-    -e PUID=1000 \
-    -e PGID=1000 \
-    -e TZ=Asia/Kolkata \
+    -e PUID=$SID \
+    -e PGID=$GUID \
+    -e TZ=$TIMEZONE \
     -e WEBUI_PORT=8090 \
     -p 8090:8090 \
     -p 6881:6881 \
@@ -125,9 +131,9 @@ docker run -d \
 echo "Adding Heimdall"
 docker run -d \
     --name=heimdall \
-    -e PUID=1000 \
-    -e PGID=1000 \
-    -e TZ=Asia/Kolkata \
+    -e PUID=$SID \
+    -e PGID=$GUID \
+    -e TZ=$TIMEZONE \
     -p 80:80 \
     -p 443:443 \
     -v $HOME/dockdata/heimdall:/config \
@@ -140,8 +146,8 @@ docker run -d \
     --name=filebrowser \
         -v /:/srv \
         -v $HOME/dockdata/filebrowser/filebrowser.db:/database.db \
-        -e PUID=1000 \
-        -e PGID=1000 \
+        -e PUID=$SID \
+        -e PGID=$GUID \
         -p 8081:80 \
         filebrowser/filebrowser
 
@@ -150,7 +156,7 @@ echo "Adding Jellyseerr"
 docker run -d \
 --name jellyseerr \
 -e LOG_LEVEL=debug \
--e TZ=Asia/Kolkata \
+-e TZ=$TIMEZONE \
 -p 5055:5055 \
 -v $HOME/dockdata/jellyseerr:/app/config \
 --restart unless-stopped \
@@ -181,9 +187,9 @@ echo "Installing Indexers - Prowlarr, Radarr, Sonarr and Bazarr"
 # Prowlarr
 docker run -d \
 --name=prowlarr \
--e PUID=1000 \
--e PGID=1000 \
--e TZ=Europe/London \
+-e PUID=$SID \
+-e PGID=$GUID \
+-e TZ=$TIMEZONE \
 -p 9696:9696 \
 -v $HOME/dockdata/prowlarr:/config \
 --restart unless-stopped \
@@ -192,9 +198,9 @@ linuxserver/prowlarr:develop
 # Bazarr
 docker run -d \
     --name=bazarr \
-    -e PUID=1000 \
-    -e PGID=1000 \
-    -e TZ=Asia/Kolkata \
+    -e PUID=$SID \
+    -e PGID=$GUID \
+    -e TZ=$TIMEZONE \
     -p 6767:6767 \
     -v $HOME/dockdata/bazarr:/config \
     -v $HOME/data/movies:/movies  \
@@ -205,9 +211,9 @@ docker run -d \
 # Sonarr
 docker run -d \
     --name=sonarr \
-    -e PUID=1000 \
-    -e PGID=1000 \
-    -e TZ=Asia/Kolkata \
+    -e PUID=$SID \
+    -e PGID=$GUID \
+    -e TZ=$TIMEZONE \
     -p 8989:8989 \
     -v $HOME/dockdata/sonarr:/config \
     -v $HOME/data:/data \
@@ -218,9 +224,9 @@ docker run -d \
 # Radarr
 docker run -d \
     --name=radarr \
-    -e PUID=1000 \
-    -e PGID=1000 \
-    -e TZ=Asia/Kolkata \
+    -e PUID=$SID \
+    -e PGID=$GUID \
+    -e TZ=$TIMEZONE \
     -p 7878:7878 \
     -v $HOME/dockdata/radarr/data:/config \
     -v $HOME/data:/data  \
@@ -239,7 +245,6 @@ chmod +x cron.sh
 # Printing out the ip address and ports
 
 echo "The installation is complete now, proceed with the configuration of the containers"
-echo "IP address is" 
-hostname -I
+echo "IP address is ${hostname -I | cut -d' ' -f1}" 
 printf "Use the following ports for the services: \n Portainer :9000 \n Jellyfin :8096 \n qBittorrent :8090 \n Heimdall :80(default http port) \n Filebrowser :8081 \n Jellyseerr :5055 \n Prowlarr :9696 \n Bazarr :6767 \n Radarr :7878 \n Sonarr :8989 \n"
 echo "Add these services to Heimdall so you don't need to keep track of the IP addresses and the Port numbers"
